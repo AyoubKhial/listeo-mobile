@@ -1,0 +1,71 @@
+page-login {
+    #emailInput, #passwordInput{
+        color: black
+    }
+    
+    .facebook-button{
+        margin: 30px 10px
+    }
+    
+    .login-divider{
+        margin-bottom: 10px;
+        text-align: center
+    }
+    
+    .md ion-list > .item:first-child, 
+    .md ion-list > .item-wrapper:first-child .item,
+    .wp ion-list > .item:first-child, 
+    .wp ion-list > .item-wrapper:first-child .item,
+    .ios ion-list > .item:first-child, 
+    .ios ion-list > .item-wrapper:first-child .item {
+        border-top: none;
+    }
+    
+    input{
+        border: none;
+        flex: 1
+    }
+    
+    .item{
+        border: 1px solid rgb(240,240,240);
+        border-radius: 2px;
+        margin: 20px 10px;
+        height: 30px;
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .input-icon{
+        background-color: rgb(240,240,240);
+        width: 30px;
+        margin-right: 5px
+    }
+    
+    .input-icon input{
+        padding: 10px
+    }
+    
+    ion-icon{
+        margin-left: 8px;
+        margin-top: 4px
+    }
+    
+    .facebook-button{
+        cursor: pointer;
+    }
+    
+    .error{
+        font-size: 10px;
+        color: red;
+        padding-left: 15px;
+        font-weight: 600
+    }
+    
+    .item-input-validation{
+        margin-bottom: 5px
+    }
+    
+    .oauth-buttons{
+        margin: 0 15px;
+    }
+}

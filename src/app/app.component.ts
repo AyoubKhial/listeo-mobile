@@ -3,6 +3,8 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
+import { LoginPage } from '../pages/login/login';
+import { LogoutPage } from '../pages/logout/logout';
 
 @Component({
     templateUrl: 'app.html'
@@ -14,6 +16,8 @@ export class MyApp {
     rootPage: any = HomePage;
     activePage: any;
     pages: Array<{ title: string, component?: any, icon: string, fontAwesome: boolean }>;
+    ifAuth: Array<{ title: string, component?: any, icon: string, fontAwesome: boolean }>;
+    ifGuest: Array<{ title: string, component?: any, icon: string, fontAwesome: boolean }>;
     userInformations;
 
     constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
@@ -25,12 +29,16 @@ export class MyApp {
             { title: 'Blog', component: null, icon: 'logo-rss', fontAwesome: false },
             { title: 'Nearby', component: null, icon: 'map-marker', fontAwesome: true },
             { title: 'About', component: null, icon: 'information-circle', fontAwesome: false },
-            { title: 'Messages', component: null, icon: 'mail', fontAwesome: false },
-            { title: 'Logout', component: null, icon: 'sign-out', fontAwesome: true },
-            { title: 'Profile', component: null, icon: 'contact', fontAwesome: false },
-            { title: 'Favorites', component: null, icon: 'heart', fontAwesome: false },
-            { title: 'Login', component: null, icon: 'sign-in', fontAwesome: true }
         ];
+        this.ifAuth = [
+            { title: 'Messages', component: null, icon: 'mail', fontAwesome: false },
+            { title: 'Logout', component: LogoutPage, icon: 'sign-out', fontAwesome: true },
+            { title: 'Profile', component: null, icon: 'contact', fontAwesome: false },
+            { title: 'Favorites', component: null, icon: 'heart', fontAwesome: false }
+        ];
+        this.ifGuest = [
+            { title: 'Login', component: LoginPage, icon: 'sign-in', fontAwesome: true }
+        ]
         this.activePage = this.pages[0];
     }
 
@@ -39,6 +47,22 @@ export class MyApp {
             this.statusBar.styleDefault();
             this.splashScreen.hide();
         });
+    }
+
+    ngOnInit(): void {
+        if (localStorage.getItem("user") != null) {
+            this.auth = true;
+            this.userInformations = JSON.parse(localStorage.getItem("user"))[0];
+            for (var i = 0; i < this.ifAuth.length; i++) {
+                this.pages.push(this.ifAuth[i]);
+            }
+        }
+        else {
+            this.auth = false;
+            for (var j = 0; j < this.ifGuest.length; j++) {
+                this.pages.push(this.ifGuest[j]);
+            }
+        }
     }
 
     openPage(page) {
