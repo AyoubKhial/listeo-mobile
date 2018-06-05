@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Blog</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-list>
+        <ion-searchbar (ionInput)="getArticles($event)"></ion-searchbar>
+        <ion-item class="item" *ngFor="let article of filtredArticles">
+            <ion-grid>
+                <ion-row>
+                    <ion-col col-3>
+                        <ion-thumbnail class="thumbnail" item-start>
+                            <img src="assets/images/{{ article.photo }}">
+                        </ion-thumbnail>
+                    </ion-col>
+                    <ion-col col-9>
+                        <span class="article-title">{{ (article.titre.length>30)? (article.titre | slice:0:30)+'...':(article.titre)}}</span>
+                        <span class="article-user">
+                            <span>By </span>{{article.full_name}}
+                        </span>
+                        <span *ngFor="let tag of article.tags; let isLast=last" class="article-tags">
+                            {{tag}}{{isLast ? '' : ', '}}
+                        </span>
+                        <span class="article-date">
+                            {{article.inserted}}
+                        </span>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item>
+    </ion-list>
+</ion-content>

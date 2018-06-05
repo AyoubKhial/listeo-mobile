@@ -9,13 +9,15 @@ import { HttpModule } from '@angular/http';
 import { DatabaseProvider } from '../providers/database/database';
 import { LoginPage } from '../pages/login/login';
 import { LogoutPage } from '../pages/logout/logout';
+import { BlogPage } from '../pages/blog/blog';
 
 @NgModule({
     declarations: [
         MyApp,
         HomePage,
         LoginPage,
-        LogoutPage
+        LogoutPage,
+        BlogPage
     ],
     imports: [
         BrowserModule,
@@ -27,7 +29,8 @@ import { LogoutPage } from '../pages/logout/logout';
         MyApp,
         HomePage,
         LoginPage,
-        LogoutPage
+        LogoutPage,
+        BlogPage
     ],
     providers: [
         StatusBar,

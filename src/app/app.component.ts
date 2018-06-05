@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { LogoutPage } from '../pages/logout/logout';
+import { BlogPage } from '../pages/blog/blog';
 
 @Component({
     templateUrl: 'app.html'
@@ -26,7 +27,7 @@ export class MyApp {
             { title: 'Home', component: HomePage, icon: 'home', fontAwesome: false },
             { title: 'Restaurants', component: null, icon: 'pizza', fontAwesome: false },
             { title: 'Hotels', component: null, icon: 'bed', fontAwesome: true },
-            { title: 'Blog', component: null, icon: 'logo-rss', fontAwesome: false },
+            { title: 'Blog', component: BlogPage, icon: 'logo-rss', fontAwesome: false },
             { title: 'Nearby', component: null, icon: 'map-marker', fontAwesome: true },
             { title: 'About', component: null, icon: 'information-circle', fontAwesome: false },
         ];
