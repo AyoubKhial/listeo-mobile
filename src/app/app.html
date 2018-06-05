@@ -1,1 +1,41 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="content">
+	<ion-header>
+		<ion-toolbar color="dark-primary">
+			<ion-title *ngIf="!auth">Menu</ion-title>
+			<ion-grid *ngIf="auth">
+				<ion-row class="menu-head-row">
+					<ion-col col-4>
+						<img src="assets/imgs/user.jpg" class="menu-image">
+					</ion-col>
+					<ion-col col-8>
+						<span class="username">{{userInformations.first_name}} {{userInformations.last_name}}</span>
+						<span class="user-city">{{userInformations.name}}, Morocco</span>
+						<button ion-button icon-left color="primary" class="menu-head-button" round>
+							<ion-icon name="contact"></ion-icon> MY ACCOUNT
+						</button>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</ion-toolbar>
+	</ion-header>
+	<ion-content>
+		<ion-list>
+			<ion-grid>
+				<ion-row *ngFor="let p of pages" (click)="openPage(p)" menuClose class="menu-row" [class.activeHighlight] = "checkActive(p)">
+					<ion-col col-2 class="menu-item-icon" *ngIf="p.fontAwesome; else ionicIcons">
+						<i class="menu-icon fa fa-{{p.icon}}" [class.activeHighlightIcon] = "checkActive(p)"></i>
+					</ion-col>
+					<ng-template #ionicIcons>
+						<ion-col col-2 class="menu-item-icon" >
+							<ion-icon name="{{p.icon}}" class="menu-icon" [class.activeHighlightIcon] = "checkActive(p)"></ion-icon>
+						</ion-col>
+					</ng-template>
+					<ion-col col-10 class="menu-item-text">
+						{{p.title}}
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</ion-list>
+	</ion-content>
+</ion-menu>
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

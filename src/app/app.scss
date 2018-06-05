@@ -1,16 +1,71 @@
-// http://ionicframework.com/docs/theming/
+@font-face{
+    font-family: montserrat;
+    src: url('../assets/montserrat.woff2')
+}
+*{
+    font-family: montserrat 
+}
 
+.menu-item-icon{
+    font-size: 20px;
+    text-align: center;
+}
+.menu-row{
+    height: 50px;
+    margin: 0, 10px;
+    cursor: pointer;
+    border-bottom: 1px solid rgb(200, 200, 200);
+    padding: 9px 0;
+}
+.menu-row:hover{ 
+    background-color: color($colors, primary);
+    color: color($colors, light)
+}
+.menu-row:hover .menu-icon{
+    color: color($colors, light)
+}
+.menu-item-text{
+    font-size: 16px;
+    font-weight: 500;
+}
+.menu-icon{
+    color: color($colors, primary)
+}
 
-// App Global Sass
-// --------------------------------------------------
-// Put style rules here that you want to apply globally. These
-// styles are for the entire app and not just one component.
-// Additionally, this file can be also used as an entry point
-// to import other Sass files to be included in the output CSS.
-//
-// Shared Sass variables, which can be used to adjust Ionic's
-// default Sass variables, belong in "theme/variables.scss".
-//
-// To declare rules for a specific mode, create a child rule
-// for the .md, .ios, or .wp mode classes. The mode class is
-// automatically applied to the <body> element in the app.
+.menu-image{
+    width:50px;
+    height:50px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.082);
+
+}
+
+.menu-head-row{
+    color: color($colors, light)
+}
+.username{
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+}
+.user-city{
+    color: #C8C8C8;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.menu-head-button{
+    padding: 10px;
+    font-size: 10px;
+    height: 2.5rem;
+}
+
+.activeHighlight{
+    background-color: color($colors, primary);
+    color: color($colors, light)
+}
+
+.activeHighlightIcon{
+    color: color($colors, light)
+}
