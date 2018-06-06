@@ -54,6 +54,7 @@ export class MyApp {
         if (localStorage.getItem("user") != null) {
             this.auth = true;
             this.userInformations = JSON.parse(localStorage.getItem("user"))[0];
+            console.log(this.userInformations);
             for (var i = 0; i < this.ifAuth.length; i++) {
                 this.pages.push(this.ifAuth[i]);
             }

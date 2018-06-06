@@ -10,6 +10,10 @@ import { DatabaseProvider } from '../providers/database/database';
 import { LoginPage } from '../pages/login/login';
 import { LogoutPage } from '../pages/logout/logout';
 import { BlogPage } from '../pages/blog/blog';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { GooglePlus } from '@ionic-native/google-plus';
+import { firebaseConfig } from '../config';
 
 @NgModule({
     declarations: [
@@ -22,7 +26,9 @@ import { BlogPage } from '../pages/blog/blog';
     imports: [
         BrowserModule,
         IonicModule.forRoot(MyApp),
-        HttpModule
+        HttpModule,
+        AngularFireModule.initializeApp(firebaseConfig.fire),
+        AngularFireAuthModule
     ],
     bootstrap: [IonicApp],
     entryComponents: [
@@ -36,7 +42,8 @@ import { BlogPage } from '../pages/blog/blog';
         StatusBar,
         SplashScreen,
         { provide: ErrorHandler, useClass: IonicErrorHandler },
-        DatabaseProvider
+        DatabaseProvider,
+        GooglePlus
     ]
 })
 export class AppModule { }

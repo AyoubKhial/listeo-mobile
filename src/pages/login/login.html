@@ -1,33 +1,43 @@
 <ion-header>
-	<ion-navbar color="primary">
-		<button ion-button menuToggle>
-			<ion-icon name="menu"></ion-icon>
-		</button>
-		<ion-title>Login</ion-title>
-	</ion-navbar>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Login</ion-title>
+    </ion-navbar>
 </ion-header>
 <ion-content>
-	<form (ngSubmit)="checkAuth()" [formGroup]="loginForm">
-		<div class="list">
-			<label class="item item-input" [ngClass]="{'item-input-validation': email?.dirty || email?.touched}">
-				<span class="input-icon">
-					<ion-icon name="person" id="emailInput"></ion-icon>
-				</span>
-				<input type="text" placeholder="yours@exemple.com" formControlName="email" />
-				<br/>
-			</label>
-			<span class="error" *ngIf="!!email?.errors?.required && email?.invalid && (email?.dirty || email?.touched)">Email is required.</span>
-			<span class="error" *ngIf="!!email?.errors?.pattern && email?.invalid && (email?.dirty || email?.touched)">Email is invalid.</span>
-			<label class="item item-input" [ngClass]="{'item-input-validation': password?.dirty || password?.touched}">
-				<span class="input-icon">
-					<ion-icon name="lock" id="passwordInput"></ion-icon>
-				</span>
-				<input type="password" placeholder="your password" formControlName="password" />
-			</label>
-			<span class="error" *ngIf="!!password?.errors?.required && password?.invalid && (password?.dirty || password?.touched)">Password is required.</span>
-		</div>
-		<div padding>
-			<button ion-button block type="submit">Login</button>
-		</div>
-	</form>
+    <div class="oauth-buttons">
+        <button ion-button icon-left (tap)="googleLogin()" block >
+            <ion-icon name="logo-googleplus"></ion-icon>
+            Login with google
+        </button>
+    </div>
+
+    <div class="login-divider">
+        <span>or</span>
+    </div>
+    <form (ngSubmit)="checkAuth()" [formGroup]="loginForm">
+        <div class="list">
+            <label class="item item-input" [ngClass]="{'item-input-validation': email?.dirty || email?.touched}">
+                <span class="input-icon">
+                    <ion-icon name="person" id="emailInput"></ion-icon>
+                </span>
+                <input type="text" placeholder="yours@exemple.com" formControlName="email" />
+                <br/>
+            </label>
+            <span class="error" *ngIf="!!email?.errors?.required && email?.invalid && (email?.dirty || email?.touched)">Email is required.</span>
+            <span class="error" *ngIf="!!email?.errors?.pattern && email?.invalid && (email?.dirty || email?.touched)">Email is invalid.</span>
+            <label class="item item-input" [ngClass]="{'item-input-validation': password?.dirty || password?.touched}">
+                <span class="input-icon">
+                    <ion-icon name="lock" id="passwordInput"></ion-icon>
+                </span>
+                <input type="password" placeholder="your password" formControlName="password" />
+            </label>
+            <span class="error" *ngIf="!!password?.errors?.required && password?.invalid && (password?.dirty || password?.touched)">Password is required.</span>
+        </div>
+        <div padding>
+            <button ion-button block type="submit">Login</button>
+        </div>
+    </form>
 </ion-content>
