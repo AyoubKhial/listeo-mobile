@@ -1,57 +1,55 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { DatabaseProvider } from '../../../providers/database/database';
-import { RestaurantDetailPage } from '../restaurant-detail/restaurant-detail';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/takeUntil';
+import { DatabaseProvider } from '../../../providers/database/database';
 
 @IonicPage()
 @Component({
-    selector: 'page-restaurants-listing',
-    templateUrl: 'restaurants-listing.html',
+    selector: 'page-hotels-listing',
+    templateUrl: 'hotels-listing.html',
 })
-export class RestaurantsListingPage implements OnInit, OnDestroy {
+export class HotelsListingPage implements OnInit, OnDestroy {
 
-    public restaurants: any[];
-    public filtredRestaurants: any[];
+    public hotels: any[];
+    public filtredHotels: any[];
     private userId: number;
     private unsubscribe = new Subject<void>();
 
     constructor(public navCtrl: NavController, public navParams: NavParams, private databaseProvider: DatabaseProvider) {
-        this.userId = 0;
     }
-    
+
     ngOnInit() {
         if (localStorage.getItem("user") != null){
             this.userId = JSON.parse(localStorage.getItem("user"))[0].id;
         }
-        this.getAllActivatedRestaurants();
+        this.getAllActivatedHotels();
     }
 
-    getAllActivatedRestaurants() {
-        this.databaseProvider.getAllActivatedRestaurants(this.userId).takeUntil(this.unsubscribe).subscribe(res => {
+    getAllActivatedHotels() {
+        this.databaseProvider.getAllActivatedHotels(this.userId).takeUntil(this.unsubscribe).subscribe(res => {
             if (res != 'Not found') {
-                this.restaurants = res;
-                this.filtredRestaurants = this.restaurants;
+                this.hotels = res;
+                this.filtredHotels = this.hotels;
             }
             else {
-                console.log("No article FOUND");
+                console.log("No hotels FOUND");
             }
         });
     }
-    
-    getRestaurants(ev: any) {
-        this.filtredRestaurants = this.restaurants;
+
+    getHotels(ev: any) {
+        this.filtredHotels = this.hotels;
         let val = ev.target.value;
         if (val && val.trim() != '') {
-            this.filtredRestaurants = this.filtredRestaurants.filter((item) => {
+            this.filtredHotels = this.filtredHotels.filter((item) => {
                 return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
             })
         }
     }
 
-    goToRestaurant(id){
-        this.navCtrl.push(RestaurantDetailPage,{ id: id });
+    goToHotel(id){
+        //this.navCtrl.push(RestaurantDetailPage,{ id: id });
     }
 
     getStars(rating) {
@@ -62,4 +60,5 @@ export class RestaurantsListingPage implements OnInit, OnDestroy {
         this.unsubscribe.next();
         this.unsubscribe.complete();
     }
+
 }

@@ -121,4 +121,17 @@ export class DatabaseProvider {
                 }
             });
     }
+
+    getAllActivatedHotels(userId): Observable<any> {
+        return this.http.post('http://localhost/listeo-desktop/src/api/database/getAllActivatedHotels.php', userId)
+            .map(response => {
+                this.hasResult = response;
+                if (this.hasResult._body !== 'Not found') {
+                    return response.json();
+                }
+                else {
+                    return response.text();
+                }
+            });
+    }
 }

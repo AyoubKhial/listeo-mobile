@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title><span>Hotels</span>
+            <ion-icon name="options" class="restaurant-filter"></ion-icon>
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <ion-list>
+        <ion-searchbar (ionInput)="getHotels($event)"></ion-searchbar>
+        <ion-item class="item" *ngFor="let hotel of filtredHotels">
+            <ion-grid (click)="goToHotel(hotel.id)">
+                <ion-row>
+                    <ion-col col-3>
+                        <ion-thumbnail class="thumbnail" item-start>
+                            <img src="assets/images/restaurants/{{hotel.photo}}">
+                        </ion-thumbnail>
+                    </ion-col>
+                    <ion-col col-9>
+                        <span class="article-title">{{hotel.name}}</span>
+                        <div class="star-rating">
+                            <div class="rating-counter">
+                                {{hotel.number_reviews}} reviews
+                            </div>
+                            <span class="stars alignright">
+                                <span [ngStyle]="getStars(hotel.rating)"></span>
+                            </span>
+                        </div>
+                        <p class="restaurant-adresse">{{(hotel.adresse.length>25)? (hotel.adresse | slice:0:25)+'...':(hotel.adresse)}}</p>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item>
+    </ion-list>
+</ion-content>

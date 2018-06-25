@@ -25,6 +25,7 @@ import { RestaurantDirectionsPage } from '../pages/restaurants/restaurant-direct
 import { RestaurantCommentsPage } from '../pages/restaurants/restaurant-comments/restaurant-comments';
 import { NearbyPage } from '../pages/nearby/nearby';
 import { ProfilePage } from '../pages/profile/profile';
+import { HotelsListingPage } from '../pages/hotels/hotels-listing/hotels-listing';
 
 @NgModule({
     declarations: [
@@ -41,7 +42,8 @@ import { ProfilePage } from '../pages/profile/profile';
         RestaurantDirectionsPage,
         RestaurantCommentsPage,
         NearbyPage,
-        ProfilePage
+        ProfilePage,
+        HotelsListingPage
     ],
     imports: [
         BrowserModule,
@@ -67,7 +69,8 @@ import { ProfilePage } from '../pages/profile/profile';
         RestaurantDirectionsPage,
         RestaurantCommentsPage,
         NearbyPage,
-        ProfilePage
+        ProfilePage,
+        HotelsListingPage
     ],
     providers: [
         StatusBar,

@@ -9,6 +9,7 @@ import { BlogPage } from '../pages/blog/blog';
 import { NearbyPage } from '../pages/nearby/nearby';
 import { RestaurantsListingPage } from '../pages/restaurants/restaurants-listing/restaurants-listing';
 import { ProfilePage } from '../pages/profile/profile';
+import { HotelsListingPage } from '../pages/hotels/hotels-listing/hotels-listing';
 
 @Component({
     templateUrl: 'app.html'
@@ -29,7 +30,7 @@ export class MyApp {
         this.pages = [
             { title: 'Home', component: HomePage, icon: 'home', fontAwesome: false },
             { title: 'Restaurants', component: RestaurantsListingPage, icon: 'pizza', fontAwesome: false },
-            { title: 'Hotels', component: null, icon: 'bed', fontAwesome: true },
+            { title: 'Hotels', component: HotelsListingPage, icon: 'bed', fontAwesome: true },
             { title: 'Blog', component: BlogPage, icon: 'logo-rss', fontAwesome: false },
             { title: 'Nearby', component: NearbyPage, icon: 'map-marker', fontAwesome: true },
             { title: 'About', component: null, icon: 'information-circle', fontAwesome: false },
