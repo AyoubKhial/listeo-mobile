@@ -19,6 +19,10 @@ export class RestaurantCommentsPage implements OnInit {
         this.name = this.navParams.get('name');
         this.comments = this.navParams.get('comments');
         this.number_comments = this.navParams.get("number_comments");
-        console.log(this.comments)
+        console.log(this.comments);
+    }
+
+    getStars(rating) {
+        return { 'width': parseFloat(rating) / 5 * 100 + '%' };
     }
 }

@@ -37,10 +37,10 @@
     </ion-row>
     <div class="row">
         <h2>Most Well received Places</h2>
-        <ion-slides class="well-received-slide" slidesPerView="2">
+        <ion-slides class="well-received-slide" slidesPerView="2.1">
             <ion-slide *ngFor="let location of topLocations">
                 <div class="location-photo">
-                    <img src="assets/images/restaurants/{{location.photo}}">
+                    <img src="assets/images/items/{{location.photo}}">
                 </div>
                 <div>
                     <h3>{{location.name}}</h3>
@@ -52,44 +52,46 @@
                             <span [ngStyle]="getStars(location.rating)"></span>
                         </span>
                     </div>
-                    <span class="address">{{location.ville_name}}</span>
+                    <span class="address">{{location.type}} - {{location.ville_name}}</span>
                 </div>
             </ion-slide>
         </ion-slides>
     </div>
     <div class="row">
         <h2>Recently Added Places</h2>
-        <ion-slides class="well-received-slide" slidesPerView="2">
+        <ion-slides class="well-received-slide" slidesPerView="2.1">
             <ion-slide *ngFor="let location of recentLocations">
-                <div class="location-photo">
-                    <img src="assets/images/restaurants/{{location.photo}}">
-                </div>
-                <div>
-                    <h3>{{location.name}}</h3>
-                    <div class="star-rating">
-                        <div class="rating-counter">
-                            {{location.number_reviews}} reviews
-                        </div>
-                        <span class="stars alignright">
-                            <span [ngStyle]="getStars(location.rating)"></span>
-                        </span>
+                <div (click)="goToLocation(location.type, location.id)">
+                    <div class="location-photo">
+                        <img src="assets/images/items/{{location.photo}}">
                     </div>
-                    <span class="address">{{location.ville_name}}</span>
+                    <div>
+                        <h3>{{location.name}}</h3>
+                        <div class="star-rating">
+                            <div class="rating-counter">
+                                {{location.number_reviews}} reviews
+                            </div>
+                            <span class="stars alignright">
+                                <span [ngStyle]="getStars(location.rating)"></span>
+                            </span>
+                        </div>
+                        <span class="address">{{location.type}} - {{location.ville_name}}</span>
+                    </div>
                 </div>
             </ion-slide>
         </ion-slides>
     </div>
     <div class="row">
         <h2>Recently Added Articles</h2>
-        <ion-slides class="well-received-slide" slidesPerView="2">
+        <ion-slides class="well-received-slide" slidesPerView="2.1">
             <ion-slide *ngFor="let article of articles">
                 <div class="location-photo">
                     <img src="assets/images/articles/{{article.photo}}">
                 </div>
                 <div>
                     <h3>{{article.titre}}</h3>
-                    <span class="article-texte">{{(article.texte.length>26)? (article.texte | slice:0:26)+'...':(article.texte)}}</span>
-                    <span class="article-date">{{article.inserted}}</span>
+                    <span class="article-texte">{{(article.texte.length>20)? (article.texte | slice:0:20)+'...':(article.texte)}}</span>
+                    <span class="article-date">{{article.inserted | date:'M/d/y'}}</span>
                 </div>
             </ion-slide>
         </ion-slides>

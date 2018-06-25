@@ -11,4 +11,35 @@
     <div class="restaurant-number-comments">
         All Comments ({{number_comments}})
     </div>
+    <div *ngFor="let comment of comments" class="comment-container">
+        <span class="comment-title">"{{comment[5]}}"</span>
+        <div class="star-rating">
+            <div class="rating-counter">
+                {{comment[2] | date:'M/d/y'}}
+            </div>
+            <span class="stars alignright">
+                <span [ngStyle]="getStars(comment[4])"></span>
+            </span>
+        </div>
+        <ion-row class="comment-header">
+            <ion-col col-2>
+                <img class="user-avatar" src="assets/images/users/{{comment[3]}}" alt="">
+            </ion-col>
+            <ion-col col-10 class="comment-user">
+                <span>{{comment[1]}}</span>
+            </ion-col>
+        </ion-row>
+        <div class="comment-text">
+            {{comment[0]}}
+        </div>
+        <div class="comment-photos">
+            <ion-slides class="well-received-slide" slidesPerView="2.1">
+                <ion-slide *ngFor="let photo of comment[6]">
+                    <div class="comment-photo">
+                        <img src="assets/images/comments/{{photo}}">
+                    </div>
+                </ion-slide>
+            </ion-slides>
+        </div>
+    </div>
 </ion-content>

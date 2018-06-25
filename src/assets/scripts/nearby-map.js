@@ -38,7 +38,7 @@ function nearbyMap() {
     for(var i=0 ;i<$('#map').data('items').length;i++){
         var l = parseFloat($('#map').data('items')[i].latitude);
         var l2 = parseFloat($('#map').data('items')[i].longitude);
-        locations.push([locationData('listings-single-page.html', 'assets/images/restaurants/'+$('#map').data('items')[i].url, $('#map').data('items')[i].name, $('#map').data('items')[i].adresse, $('#map').data('items')[i].rating, $('#map').data('items')[i].number_reviews), l, l2, $('#map').data('items')[i].type]);
+        locations.push([locationData('listings-single-page.html', 'assets/images/items/'+$('#map').data('items')[i].url, $('#map').data('items')[i].name, $('#map').data('items')[i].adresse, $('#map').data('items')[i].rating, $('#map').data('items')[i].number_reviews), l, l2, $('#map').data('items')[i].type]);
         
     }console.log(locations);
     function numericalRating(ratingElem) {

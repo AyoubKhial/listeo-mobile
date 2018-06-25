@@ -8,4 +8,73 @@ page-restaurant-comments {
         line-height: 35px;
         padding-left: 3px
     }
+
+    span.stars, span.stars span {
+        display: block;
+        background: url('https://apppresser.com/wp-content/uploads/2015/11/stars.png') 0 -16px repeat-x;
+        width: 80px;
+        height: 16px
+    }
+    
+    span.stars span {
+        background-position: 0 0
+    }
+    
+    .alignright {
+        float:left
+    }
+
+    .star-rating .rating-counter {
+        top: -1px;
+        position: relative;
+    }
+    
+    .rating-counter {
+        color: #909090;
+        padding-left: 5px;
+        display: inline-block;
+        font-size: 13px;
+    }
+
+    .comment-container{
+        margin: 8px;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 10px;
+        margin-bottom: 10px
+    }
+
+    .comment-title{
+        font-weight: 600;
+        font-size: 15px;
+    }
+
+    .star-rating{
+        margin-top: 3px;
+        margin-bottom: 3px
+    }
+
+    .comment-user{
+        padding-top: 15px
+    }
+
+    .user-avatar{
+        border-radius: 50%;
+        border: 2px solid #ddd;
+        padding: 3px;
+        background:#fff;
+    }
+
+    .comment-text{
+        margin-bottom: 10px
+    }
+
+    .comment-photo{
+        height: 100px;
+        margin-right: 4px
+    }
+
+    .comment-photo img{
+        height: 100%;
+        width: 100%
+    }
 }

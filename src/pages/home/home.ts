@@ -6,6 +6,7 @@ import { RestaurantsListingPage } from '../restaurants/restaurants-listing/resta
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/takeUntil';
 import { HotelsListingPage } from '../hotels/hotels-listing/hotels-listing';
+import { RestaurantDetailPage } from '../restaurants/restaurant-detail/restaurant-detail';
 
 @Component({
     selector: 'page-home',
@@ -89,6 +90,12 @@ export class HomePage implements OnInit, OnDestroy {
 
     goToHotels(){
         this.navCtrl.push(HotelsListingPage)
+    }
+
+    goToLocation(type, id){
+        if(type == "restaurant"){
+            this.navCtrl.push(RestaurantDetailPage,{ id: id });
+        }
     }
 
     getStars(rating) {

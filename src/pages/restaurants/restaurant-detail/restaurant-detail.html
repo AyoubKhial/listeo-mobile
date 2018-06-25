@@ -8,7 +8,7 @@
 </ion-header>
 <ion-content>
     <div class="image-restaurant-container">
-        <img src="assets/images/restaurants/{{restaurant?.main_photo}}">
+        <img src="assets/images/items/{{restaurant?.main_photo}}">
         <span (click)="goToPhotos()">
             <ion-icon name="camera"></ion-icon> {{restaurant?.number_photos}}
         </span>
@@ -70,7 +70,7 @@
                 <ion-slides class="restaurant-photos-slide" slidesPerView="2.5">
                     <ion-slide *ngFor="let photo of restaurant?.photos">
                         <div class="restaurant-photo">
-                            <img src="assets/images/restaurants/{{photo}}">
+                            <img src="assets/images/items/{{photo}}">
                         </div>
                     </ion-slide>
                 </ion-slides>
