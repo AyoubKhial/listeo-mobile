@@ -1,0 +1,18 @@
+page-restaurant-hours {
+    h1{
+        border-bottom: 1px solid #ddd;
+        font-size: 20px
+    }
+    
+    .row{
+        padding: 10px 0;
+    }
+
+    .hour-day {
+        text-transform: capitalize
+    }
+
+    .today{
+        font-weight: 600
+    }
+}

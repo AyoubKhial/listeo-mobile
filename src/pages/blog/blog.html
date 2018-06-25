@@ -20,7 +20,7 @@
                     <ion-col col-9>
                         <span class="article-title">{{ (article.titre.length>30)? (article.titre | slice:0:30)+'...':(article.titre)}}</span>
                         <span class="article-user">
-                            <span>By </span>{{article.full_name}}
+                            <span>By </span>{{article.user_name}}
                         </span>
                         <span *ngFor="let tag of article.tags; let isLast=last" class="article-tags">
                             {{tag}}{{isLast ? '' : ', '}}

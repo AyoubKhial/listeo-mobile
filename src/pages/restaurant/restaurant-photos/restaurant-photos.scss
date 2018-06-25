@@ -1,0 +1,24 @@
+page-restaurant-photos {
+    h1{
+        border-bottom: 1px solid #ddd;
+        font-size: 20px;
+        padding: 10px
+    }
+
+    .col{
+        padding: 0;
+        margin: 0;
+        padding-right: 1px;
+        padding-left: 1px;
+        margin-bottom: 2px
+    }
+
+    .image-container{
+        height: 100px
+    }
+    
+    .image-container img{
+        width: 100%;
+        height: 100px
+    }
+}

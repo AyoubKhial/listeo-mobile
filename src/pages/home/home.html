@@ -7,13 +7,92 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-    <h3>Ionic Menu Starter</h3>
-
-    <p>
-        If you get lost, the
-        <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-    </p>
-
-    <button ion-button secondary menuToggle>Toggle Menu</button>
+<ion-content>
+    <ion-slides class="home-slider" autoplay="5000" loop="true" speed="3000">
+        <ion-slide>
+            <img src="assets/images/rabat.jpg">
+        </ion-slide>
+        <ion-slide>
+            <img src="assets/images/fes.jpg">
+        </ion-slide>
+        <ion-slide>
+            <img src="assets/images/casablanca.jpg">
+        </ion-slide>
+        <ion-slide>
+            <img src="assets/images/marrakech.jpg">
+        </ion-slide>
+    </ion-slides>
+    <ion-row class="items">
+        <ion-col class="item" (click)="goToRestaurants()">
+            <ion-icon name="pizza"></ion-icon>
+            <span>Restaurants</span>
+        </ion-col>
+        <ion-col class="item">
+            <i class="fa fa-bed"></i>
+            <span>Hotels</span>
+        </ion-col>
+        <ion-col class="item" (click)="goToBlog()">
+            <ion-icon name="paper"></ion-icon>
+            <span>Articles</span>
+        </ion-col>
+    </ion-row>
+    <div class="row">
+        <h2>Most Well received Places</h2>
+        <ion-slides class="well-received-slide" slidesPerView="2">
+            <ion-slide *ngFor="let location of topLocations">
+                <div class="location-photo">
+                    <img src="assets/images/restaurants/{{location.photo}}">
+                </div>
+                <div>
+                    <h3>{{location.name}}</h3>
+                    <div class="star-rating">
+                        <div class="rating-counter">
+                            {{location.number_reviews}} reviews
+                        </div>
+                        <span class="stars alignright">
+                            <span [ngStyle]="getStars(location.rating)"></span>
+                        </span>
+                    </div>
+                    <span class="address">{{location.ville_name}}</span>
+                </div>
+            </ion-slide>
+        </ion-slides>
+    </div>
+    <div class="row">
+        <h2>Recently Added Places</h2>
+        <ion-slides class="well-received-slide" slidesPerView="2">
+            <ion-slide *ngFor="let location of recentLocations">
+                <div class="location-photo">
+                    <img src="assets/images/restaurants/{{location.photo}}">
+                </div>
+                <div>
+                    <h3>{{location.name}}</h3>
+                    <div class="star-rating">
+                        <div class="rating-counter">
+                            {{location.number_reviews}} reviews
+                        </div>
+                        <span class="stars alignright">
+                            <span [ngStyle]="getStars(location.rating)"></span>
+                        </span>
+                    </div>
+                    <span class="address">{{location.ville_name}}</span>
+                </div>
+            </ion-slide>
+        </ion-slides>
+    </div>
+    <div class="row">
+        <h2>Recently Added Articles</h2>
+        <ion-slides class="well-received-slide" slidesPerView="2">
+            <ion-slide *ngFor="let article of articles">
+                <div class="location-photo">
+                    <img src="assets/images/articles/{{article.photo}}">
+                </div>
+                <div>
+                    <h3>{{article.titre}}</h3>
+                    <span class="article-texte">{{(article.texte.length>26)? (article.texte | slice:0:26)+'...':(article.texte)}}</span>
+                    <span class="article-date">{{article.inserted}}</span>
+                </div>
+            </ion-slide>
+        </ion-slides>
+    </div>
 </ion-content>

@@ -1,0 +1,51 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{name}} - Directions </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <button onclick="directionsMap()" id="loadMap2" style="display: none"></button>
+    <div id="directionMap-container">
+        <div id="directionMap" attr.data-latitude="{{latitude}}" attr.data-longitude="{{longitude}}" data-map-icon="fa fa-cutlery"></div>
+        <ion-row>
+            <div class="directions-information">
+                <div class='direction-icon'>
+                    <i class="material-icons walk">directions_walk</i>
+                </div>
+                <div class="information">
+                    <span class="distance" id="walking-distance">
+                    </span>
+                    <span class="duration" id="walking-duration">
+                    </span>
+                </div>
+            </div>
+        </ion-row>
+        <ion-row>
+            <div class="directions-information">
+                <div class='direction-icon'>
+                    <i class="material-icons car">directions_car</i>
+                </div>
+                <div class="information">
+                    <span class="distance" id="driving-distance">
+                    </span>
+                    <span class="duration" id="driving-duration">
+                    </span>
+                </div>
+            </div>
+        </ion-row>
+        <!--<div class="directions-information">
+                        <div>
+                            <i class="material-icons">directions_car</i>
+                        </div>
+                        <div class="information">
+                            <span class="distance" id="driving-distance">
+                            </span>
+                            <span class="duration" id="driving-duration">
+                            </span>
+                        </div>
+                    </div>-->
+    </div>
+</ion-content>

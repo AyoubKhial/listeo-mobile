@@ -1,0 +1,42 @@
+page-nearby {
+    #map{
+        height: 100%
+    }
+
+    span.stars, span.stars span {
+        display: block;
+        background: url('https://apppresser.com/wp-content/uploads/2015/11/stars.png') 0 -16px repeat-x;
+        width: 80px;
+        height: 16px
+    }
+    
+    span.stars span {
+        background-position: 0 0
+    }
+    
+    .alignright {
+        float:left;
+    }
+
+    .star-rating{
+        display: inline;
+    }
+    .rating-counter{
+        display: inline;
+        font-size: 12px;
+        padding-left: 5px
+    }
+
+    .listing-img-container{
+        max-height: 200px
+    }
+
+    .listing-img-container img{
+        max-height: 200px;
+        width: 100%
+    }
+
+    .fa-male{
+        color: black;
+    }
+}

@@ -1,0 +1,261 @@
+page-restaurant-detail {
+    .image-restaurant-container {
+        position: relative;
+        text-align: center;
+        color: white;
+        max-height: 200px;
+        display: inline-block;
+        background: -moz-linear-gradient(bottom, rgba(0,0,0,0) 0%, rgba(0, 0, 0, 0.89) 100%);
+        background: -webkit-gradient(linear, left bottom, left bottom, color-stop(0%,rgba(0,0,0,0.65)), color-stop(100%,rgba(0,0,0,0)));
+        background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0, 0, 0, 0.89) 100%);
+        background: -o-linear-gradient(bottom, rgba(0,0,0,0) 0%,rgba(0, 0, 0, 0.89) 100%);
+        background: -ms-linear-gradient(bottom, rgba(0,0,0,0) 0%,rgba(0, 0, 0, 0.89) 100%);
+        background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0, 0, 0, 0.89) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 );
+    }
+
+    .image-restaurant-container img{
+        max-height: 200px;
+        width: 100%;
+        position:relative;
+        z-index:-1;
+        display:block;
+    }
+
+    .image-restaurant-container span {
+        position: absolute;
+        bottom: 8px;
+        left: 16px;
+    }
+
+    .information-restaurant-container {
+        padding-left: 15px;
+        margin-top: -5px
+    }
+
+    span.stars, span.stars span {
+        display: block;
+        background: url('https://apppresser.com/wp-content/uploads/2015/11/stars.png') 0 -16px repeat-x;
+        width: 80px;
+        height: 16px
+    }
+    
+    span.stars span {
+        background-position: 0 0
+    }
+    
+    .alignright {
+        float:left
+    }
+
+    .star-rating .rating-counter {
+        top: -1px;
+        position: relative;
+    }
+    
+    .rating-counter {
+        color: #909090;
+        padding-left: 5px;
+        display: inline-block;
+        font-size: 13px;
+    }
+
+    .rating-counter{
+        padding-top: 2px
+    }
+
+    .star-rating{
+        margin-top: -3px
+    }
+
+    .restaurant-adresse{
+        font-size: 12px;
+        margin-top: 3px
+    }
+
+    .restaurant-horaire{
+        margin-top: 15px
+    }
+
+    .open-now{
+        color: green;
+        font-weight: 600;
+        font-size: 12px;
+        padding-right: 20px;
+        border-right: 1px solid #ddd
+    }
+
+    .closed-now{
+        color: red;
+        font-weight: 600;
+        font-size: 12px;
+        padding-right: 20px;
+        border-right: 1px solid #ddd
+    }
+
+    .restaurant-opening-time , .restaurant-closing-time{
+        font-size: 12px;
+    }
+
+    .more-horaire{
+        font-size: 13px;
+        color: color($colors, primary);
+        padding-right: 15px;
+        float: right
+    }
+
+    .restaurant-title{
+        font-weight: 600
+    }
+
+    .restaurant-horaire{
+        margin-bottom: 20px
+    }
+
+    .restaurant-information{
+        margin-top: 15px;
+    }
+
+    .restaurant-information i{
+        padding-right: 15px
+    }
+
+    .restaurant-information span a{
+        text-decoration: none;
+        color: black;
+        color: color($colors, primary);
+
+    }
+
+    .restaurant-information span{
+        display: block;
+        margin-bottom: 15px;
+        font-size: 13px;
+        font-weight: 600;
+        color: color($colors, primary);
+
+    }
+
+    .restaurant-location{
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .restaurant-location span{
+        margin-top: 20px
+    }
+
+    .restaurant-photos{
+        margin-top: 15px
+    }
+
+    .restaurant-photos-slide ion-slide{
+        margin-right: 10px;
+    }
+
+    .restaurant-photo{
+        height: 100px;
+    }
+    .restaurant-photo img{
+        height: 100%;
+        width: 100%
+    }
+
+    .restaurant-photos .row{
+        margin-top: 10px
+    }
+
+    .restaurant-reviews{
+        margin-top: 20px;
+    }
+
+    .restaurant-reviews .star-rating{
+        margin-top: 10px;
+        margin-bottom: 7px
+    }
+
+    .user-avatar{
+        border-radius: 50%;
+        border: 2px solid #ddd;
+        padding: 3px;
+        background:#fff;
+    }
+
+    .restaurant-comments{
+        margin-top: 20px
+    }
+
+    .restaurant-comments .comment-header{
+        margin-top: 15px
+    }
+
+    .comment-title{
+        font-weight: 600
+    }
+
+    .restaurant-comments .star-rating{
+        margin-top: 5px
+    }
+
+    .restaurant-comments .star-rating .rating-counter{
+        margin-left: 8px
+    }
+
+    .comment-date{
+        font-size: 12px
+    }
+
+    .comment-header{
+        margin-bottom: -15px
+    }
+
+    .comment-text{
+        font-size: 12px
+    }
+    
+    .more-comments{
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        margin-top: 10px;
+        height: 40px;
+        margin-bottom: 20px
+    }
+
+    .more-comments ion-icon{
+        float: right;
+        padding-right: 10px
+    }
+
+    .more-comments span, .more-comments ion-icon{
+        font-weight: 600;
+    }
+    
+    .more-comments div{
+        margin-top: 10px
+    }
+
+    .write-comment span{
+        display: block
+    }
+
+    .user-name{
+        margin-bottom: 7px
+    }
+
+    .rating {
+        margin-top: 2px;
+        padding: 0px;
+        &.rating li {
+          padding: 0 1px !important;
+          background: none;
+          color: #009FE3;
+          ion-icon {
+            font-size: 25px;
+          }
+        }
+    }
+
+    .write-comment .rate {
+        color: #009FE3;
+    }
+}

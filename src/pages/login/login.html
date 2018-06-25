@@ -19,22 +19,22 @@
     </div>
     <form (ngSubmit)="checkAuth()" [formGroup]="loginForm">
         <div class="list">
-            <label class="item item-input" [ngClass]="{'item-input-validation': email?.dirty || email?.touched}">
+            <label class="item item-input" [ngClass]="{'item-input-validation': loginEmail?.dirty || loginEmail?.touched}">
                 <span class="input-icon">
                     <ion-icon name="person" id="emailInput"></ion-icon>
                 </span>
-                <input type="text" placeholder="yours@exemple.com" formControlName="email" />
+                <input type="text" placeholder="yours@exemple.com" formControlName="loginEmail" />
                 <br/>
             </label>
-            <span class="error" *ngIf="!!email?.errors?.required && email?.invalid && (email?.dirty || email?.touched)">Email is required.</span>
-            <span class="error" *ngIf="!!email?.errors?.pattern && email?.invalid && (email?.dirty || email?.touched)">Email is invalid.</span>
+            <span class="error" *ngIf="!!loginEmail?.errors?.required && loginEmail?.invalid && (loginEmail?.dirty || loginEmail?.touched)">Email is required.</span>
+            <span class="error" *ngIf="!!loginEmail?.errors?.pattern && loginEmail?.invalid && (loginEmail?.dirty || loginEmail?.touched)">Email is invalid.</span>
             <label class="item item-input" [ngClass]="{'item-input-validation': password?.dirty || password?.touched}">
                 <span class="input-icon">
                     <ion-icon name="lock" id="passwordInput"></ion-icon>
                 </span>
-                <input type="password" placeholder="your password" formControlName="password" />
+                <input type="password" placeholder="your password" formControlName="loginPassword" />
             </label>
-            <span class="error" *ngIf="!!password?.errors?.required && password?.invalid && (password?.dirty || password?.touched)">Password is required.</span>
+            <span class="error" *ngIf="!!loginPassword?.errors?.required && loginPassword?.invalid && (loginPassword?.dirty || loginPassword?.touched)">Password is required.</span>
         </div>
         <div padding>
             <button ion-button block type="submit">Login</button>

@@ -1,0 +1,75 @@
+page-restaurants {
+    .item {
+        min-height: 7rem;
+        border: none;
+        border-bottom: 1px dashed color($colors, primary);
+        margin: 0;
+    }
+    .item:last-child{
+        border: none;
+    }
+    .list-ios>.item-block:first-child {
+        border-top: none;
+    }
+    .list-ios>.item-block:last-child {
+        border-bottom: none;
+    }
+    .item .thumbnail img {
+        height: 60px;
+        width: 60px;
+        
+    }
+    .item .thumbnail {
+        min-width: 0;
+        min-height: 0;
+        margin: 0
+    }
+    .item{
+        padding: 0
+    }
+
+    span.stars, span.stars span {
+        display: block;
+        background: url('https://apppresser.com/wp-content/uploads/2015/11/stars.png') 0 -16px repeat-x;
+        width: 80px;
+        height: 16px
+    }
+    
+    span.stars span {
+        background-position: 0 0
+    }
+    
+    .alignright {
+        float:left
+    }
+
+    .star-rating .rating-counter {
+        top: -1px;
+        position: relative;
+    }
+
+    .rating-counter {
+        color: #909090;
+        padding-left: 5px;
+        display: inline-block;
+        font-size: 13px;
+    }
+    .restaurant-adresse{
+        color: black;
+        font-size: 12px;
+        white-space: pre;
+    }
+
+    .restaurant-filter{
+        float: right;
+    }
+
+    ion-title span{
+        float: left;
+    }
+
+    .toolbar-ios ion-title {
+        padding: 0 90px 1px;
+        padding-right: 20px
+    }
+}

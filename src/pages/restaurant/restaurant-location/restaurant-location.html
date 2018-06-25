@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{name}} - Location</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <button onclick="singleListingMap()" id="loadMap" style="display: none"></button>
+    <div id="singleListingMap-container">
+        <div id="singleListingMap" attr.data-latitude="{{latitude}}" attr.data-longitude="{{longitude}}" data-map-icon="fa fa-cutlery"></div>
+        <a (click)="goToDirections()" id="streetView">
+            <i class="material-icons">directions</i>
+        </a>
+        <div id="over_map">
+            <ion-row>
+                <ion-col col-4 class="image-container">
+                    <img class="restaurant-photo" src="assets/images/restaurants/{{photo}}" alt="">
+                </ion-col>
+                <ion-col col-8>
+                    <div class="restaurant-information">
+                        <span class="restaurant-name">{{name}}</span>
+                        <div class="star-rating">
+                            <div class="rating-counter">
+                                {{number_reviews}} Reviews
+                            </div>
+                            <span class="stars alignright">
+                                <span [ngStyle]="getStars(rating)"></span>
+                            </span>
+                        </div>
+                        <span class="restaurant-adresse">{{adresse}}</span>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </div>
+    </div>
+</ion-content>

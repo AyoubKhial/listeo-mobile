@@ -6,6 +6,9 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { LogoutPage } from '../pages/logout/logout';
 import { BlogPage } from '../pages/blog/blog';
+import { NearbyPage } from '../pages/nearby/nearby';
+import { RestaurantsPage } from '../pages/restaurant/restaurants/restaurants';
+import { ProfilePage } from '../pages/profile/profile';
 
 @Component({
     templateUrl: 'app.html'
@@ -25,16 +28,16 @@ export class MyApp {
         this.initializeApp();
         this.pages = [
             { title: 'Home', component: HomePage, icon: 'home', fontAwesome: false },
-            { title: 'Restaurants', component: null, icon: 'pizza', fontAwesome: false },
+            { title: 'Restaurants', component: RestaurantsPage, icon: 'pizza', fontAwesome: false },
             { title: 'Hotels', component: null, icon: 'bed', fontAwesome: true },
             { title: 'Blog', component: BlogPage, icon: 'logo-rss', fontAwesome: false },
-            { title: 'Nearby', component: null, icon: 'map-marker', fontAwesome: true },
+            { title: 'Nearby', component: NearbyPage, icon: 'map-marker', fontAwesome: true },
             { title: 'About', component: null, icon: 'information-circle', fontAwesome: false },
         ];
         this.ifAuth = [
             { title: 'Messages', component: null, icon: 'mail', fontAwesome: false },
             { title: 'Logout', component: LogoutPage, icon: 'sign-out', fontAwesome: true },
-            { title: 'Profile', component: null, icon: 'contact', fontAwesome: false },
+            { title: 'Profile', component: ProfilePage, icon: 'contact', fontAwesome: false },
             { title: 'Favorites', component: null, icon: 'heart', fontAwesome: false }
         ];
         this.ifGuest = [
@@ -54,7 +57,6 @@ export class MyApp {
         if (localStorage.getItem("user") != null) {
             this.auth = true;
             this.userInformations = JSON.parse(localStorage.getItem("user"))[0];
-            console.log(this.userInformations);
             for (var i = 0; i < this.ifAuth.length; i++) {
                 this.pages.push(this.ifAuth[i]);
             }

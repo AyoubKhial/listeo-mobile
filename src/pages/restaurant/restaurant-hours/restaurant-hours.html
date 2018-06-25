@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Hours</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <h1>{{name}}</h1>
+    <ion-row *ngFor="let hour of hours" class="row">
+        <ion-col col-5>
+            <span class="hour-day" [ngClass]="{'today': hour[0] == today}">{{hour[0]}}</span>
+        </ion-col>
+        <ion-col col-7 *ngIf="hour[3] == '0'; else closed">
+            <span [ngClass]="{'today': hour[0] == today}">{{hour[1]}} - {{hour[2]}}</span>
+        </ion-col>
+        <ng-template #closed>
+            <ion-col col-7>
+                <span [ngClass]="{'today': hour[0] == today}">Closed</span>
+            </ion-col>
+        </ng-template>
+    </ion-row>
+</ion-content>

@@ -14,8 +14,8 @@ import { GooglePlus } from '@ionic-native/google-plus';
 export class LoginPage {
 
     public loginForm: FormGroup;
-    public email: FormControl;
-    public password: FormControl;
+    public loginEmail: FormControl;
+    public loginPassword: FormControl;
     public user: firebase.User;
 
     constructor(public navCtrl: NavController,
@@ -34,28 +34,27 @@ export class LoginPage {
     }
 
     createFormControls() {
-        this.email = new FormControl('', [
+        this.loginEmail = new FormControl('', [
             Validators.required,
             Validators.pattern('^[a-zA-Z0-9][a-zA-Z0-9._-]*@[a-zA-Z0-9][a-zA-Z0-9._-]*\\.[a-zA-Z]{2,4}$')
         ]);
-        this.password = new FormControl('', [
+        this.loginPassword = new FormControl('', [
             Validators.required
         ]);
     }
 
     createForm() {
         this.loginForm = new FormGroup({
-            email: this.email,
-            password: this.password
+            loginEmail: this.loginEmail,
+            loginPassword: this.loginPassword
         });
     }
 
     checkAuth() {
         if (this.loginForm.valid) {
-            this.databaseProvider.checkAuth(this.loginForm.value).subscribe(response => {
+            this.databaseProvider.checkLoginCredentials(this.loginForm.value).subscribe(response => {
                 if (response !== '0') {
                     localStorage.setItem("user", JSON.stringify(response))
-                    console.log(JSON.stringify(response))
                     this.navCtrl.setRoot(HomePage);
                     location.reload()
                 }

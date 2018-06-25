@@ -1,0 +1,139 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{restaurant?.name}}</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <div class="image-restaurant-container">
+        <img src="assets/images/restaurants/{{restaurant?.main_photo}}">
+        <span (click)="goToPhotos()">
+            <ion-icon name="camera"></ion-icon> {{restaurant?.number_photos}}
+        </span>
+    </div>
+    <div class="information-restaurant-container">
+        <div>
+            <h4 class="restaurant-name">{{restaurant?.name}}</h4>
+        </div>
+        <div class="star-rating">
+            <div class="rating-counter">
+                {{restaurant?.number_reviews}} Reviews
+            </div>
+            <span class="stars alignright">
+                <span [ngStyle]="getStars(restaurant?.rating)"></span>
+            </span>
+        </div>
+        <span class="restaurant-adresse">{{restaurant?.adresse}}</span>
+        <div class="restaurant-horaire">
+            <span *ngIf="!restaurant?.closed_all_day; else closedAllDay">
+                <span *ngIf="restaurant?.open" class="open-now">Open Now</span>
+                <span *ngIf="!restaurant?.open" class="closed-now">Closed Now</span>
+                <span class="restaurant-opening-time">{{restaurant?.today_horaire[0][0]}} - </span>
+                <span class="restaurant-closing-time">{{restaurant?.today_horaire[0][1]}}</span>
+            </span>
+            <ng-template #closedAllDay>
+                <span *ngIf="!restaurant?.open" class="closed-now" style="padding-right: 170px">Closed Today</span>
+            </ng-template>
+            <span class="more-horaire" (click)="goToHours()">More</span>
+        </div>
+        <span class="restaurant-title">Restaurant Information</span>
+        <div class="restaurant-information">
+            <span *ngIf="restaurant?.phone">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                {{restaurant?.phone}}
+            </span>
+            <span *ngIf="restaurant?.website">
+                <i class="fa fa-laptop" aria-hidden="true"></i>
+                <a href="restaurant?.website">Visit Website</a>
+            </span>
+            <span *ngIf="restaurant?.email">
+                <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                <a href="restaurant?.email">Send Email</a>
+            </span>
+            <ion-row (click)="goToLocation()" class="restaurant-location">
+                <ion-col col-9>
+                    <span>
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        {{restaurant?.adresse}}
+                    </span>
+                </ion-col>
+                <ion-col col-3>
+                    <img src="assets/images/map.png" alt="">
+                </ion-col>
+            </ion-row>
+        </div>
+        <div class="restaurant-photos">
+            <span class="restaurant-title">Photos</span>
+            <div class="row">
+                <ion-slides class="restaurant-photos-slide" slidesPerView="2.5">
+                    <ion-slide *ngFor="let photo of restaurant?.photos">
+                        <div class="restaurant-photo">
+                            <img src="assets/images/restaurants/{{photo}}">
+                        </div>
+                    </ion-slide>
+                </ion-slides>
+            </div>
+        </div>
+        <div class="restaurant-reviews">
+            <span class="restaurant-title">Reviews</span>
+            <div class="star-rating">
+                <div class="rating-counter">
+                    {{restaurant?.number_reviews}} Reviews
+                </div>
+                <span class="stars alignright">
+                    <span [ngStyle]="getStars(restaurant?.rating)"></span>
+                </span>
+            </div>
+            <div style="display: block">
+                <canvas baseChart [colors]="doughnutChartColors" [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType"
+                    (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+            </div>
+        </div>
+        <div class="restaurant-comments">
+            <span class="restaurant-title">Comments</span>
+            <div *ngFor="let comment of restaurant?.last_five_comments" (click)="goToComments()">
+                <ion-row class="comment-header">
+                    <ion-col col-2>
+                        <img class="user-avatar" src="assets/images/users/{{comment[2]}}" alt="">
+                    </ion-col>
+                    <ion-col col-10>
+                        <span class="comment-title">"{{comment[4]}}"</span>
+                        <div class="star-rating">
+                            <div class="rating-counter">
+                                <span class="comment-date">{{comment[1] | date:'M/d/y'}}</span>
+                            </div>
+                            <span class="stars alignright">
+                                <span [ngStyle]="getStars(comment[3])"></span>
+                            </span>
+                        </div>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="comment-text">
+                    <p>{{ (comment[0].length>70)? (comment[0] | slice:0:70)+'...':(comment[0])}}</p>
+                </ion-row>
+            </div>
+        </div>
+        <div class="more-comments" (click)="goToComments()">
+            <div>
+                <span>More comments</span>
+                <ion-icon name="arrow-forward"></ion-icon>
+            </div>
+        </div>
+        <div class="write-comment" *ngIf="isLoggedIn" >
+            <span class="restaurant-title">Write a Review</span>
+            <ion-row>
+                <ion-col col-2>
+                    <img class="user-avatar" src="assets/images/users/{{user.photo}}" alt="">
+                </ion-col>
+                <ion-col col-10>
+                    <span class="user-name">{{user.first_name}} {{user.last_name}}</span>
+                    <span class="rate">tap to rate</span>
+                    <rating (click)="getRatingValue()" #ratingValue>
+                    </rating>
+                </ion-col>
+            </ion-row>
+        </div>
+    </div>
+</ion-content>

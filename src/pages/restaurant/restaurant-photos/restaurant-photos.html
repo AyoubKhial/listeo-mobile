@@ -1,0 +1,19 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Photos</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <h1>{{name}}</h1>
+    <ion-row>
+        <ion-col col-4 *ngFor="let photo of photos">
+            <div class="image-container">
+                <img src="assets/images/restaurants/{{photo}}" alt="">
+            </div>
+        </ion-col>
+    </ion-row>
+</ion-content>
