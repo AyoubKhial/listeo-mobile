@@ -1,20 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { DatabaseProvider } from '../../providers/database/database';
 import { BlogPage } from '../blog/blog';
-import { RestaurantsPage } from '../restaurant/restaurants/restaurants';
+import { RestaurantsListingPage } from '../restaurants/restaurants-listing/restaurants-listing';
+import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/takeUntil';
 
 @Component({
     selector: 'page-home',
     templateUrl: 'home.html'
 })
-export class HomePage {
+export class HomePage implements OnInit, OnDestroy {
 
     public topLocations: object;
     public recentLocations: object;
     private isLoggedIn: boolean;
     private userId: number;
     public articles: object;
+    private unsubscribe = new Subject<void>();
 
     constructor(public navCtrl: NavController, private databaseService: DatabaseProvider) {
         this.isLoggedIn = false;
@@ -36,26 +39,42 @@ export class HomePage {
         if(this.isLoggedIn){
             user = this.userId;
         }
-        this.databaseService.getTopRatedLocations(user).subscribe(response => {
-            this.topLocations = response;
+        this.databaseService.getTopRatedLocations(user).takeUntil(this.unsubscribe).subscribe(response => {
+            if (response != 'Not found') {
+                this.topLocations = response;
+            }
+            else {
+                console.log("No item FOUND");
+            }
         })
     }
+    
     getRecentlyAddedLocations(){
         var user = null;
         if(this.isLoggedIn){
             user = this.userId;
         }
-        this.databaseService.getRecentlyAddedLocations(user).subscribe(response => {
-            this.recentLocations = response;
+        this.databaseService.getRecentlyAddedLocations(user).takeUntil(this.unsubscribe).subscribe(response => {
+            if (response != 'Not found') {
+                this.recentLocations = response;
+            }
+            else {
+                console.log("No item FOUND");
+            }
         })
     }
 
     getLastArticles() {
-        this.databaseService.getLastArticles().subscribe(response => {
-            for (var i = 0; i < response.length; i++) {
-                response[i].texte = response[i].texte.replace(/(<([^>]+)>)/ig, "")
+        this.databaseService.getLastArticles().takeUntil(this.unsubscribe).subscribe(response => {
+            if (response != 'Not found') {
+                for (var i = 0; i < response.length; i++) {
+                    response[i].texte = response[i].texte.replace(/(<([^>]+)>)/ig, "")
+                }
+                this.articles = response;
             }
-            this.articles = response;
+            else {
+                console.log("No article FOUND");
+            }
         });
     }
 
@@ -64,10 +83,15 @@ export class HomePage {
     }
 
     goToRestaurants(){
-        this.navCtrl.push(RestaurantsPage)
+        this.navCtrl.push(RestaurantsListingPage)
     }
 
     getStars(rating) {
         return { 'width': parseFloat(rating) / 5 * 100 + '%' };
+    }
+
+    ngOnDestroy(): void {
+        this.unsubscribe.next();
+        this.unsubscribe.complete();
     }
 }

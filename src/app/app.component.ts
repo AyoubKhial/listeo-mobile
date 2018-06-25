@@ -7,7 +7,7 @@ import { LoginPage } from '../pages/login/login';
 import { LogoutPage } from '../pages/logout/logout';
 import { BlogPage } from '../pages/blog/blog';
 import { NearbyPage } from '../pages/nearby/nearby';
-import { RestaurantsPage } from '../pages/restaurant/restaurants/restaurants';
+import { RestaurantsListingPage } from '../pages/restaurants/restaurants-listing/restaurants-listing';
 import { ProfilePage } from '../pages/profile/profile';
 
 @Component({
@@ -28,7 +28,7 @@ export class MyApp {
         this.initializeApp();
         this.pages = [
             { title: 'Home', component: HomePage, icon: 'home', fontAwesome: false },
-            { title: 'Restaurants', component: RestaurantsPage, icon: 'pizza', fontAwesome: false },
+            { title: 'Restaurants', component: RestaurantsListingPage, icon: 'pizza', fontAwesome: false },
             { title: 'Hotels', component: null, icon: 'bed', fontAwesome: true },
             { title: 'Blog', component: BlogPage, icon: 'logo-rss', fontAwesome: false },
             { title: 'Nearby', component: NearbyPage, icon: 'map-marker', fontAwesome: true },
@@ -60,6 +60,7 @@ export class MyApp {
             for (var i = 0; i < this.ifAuth.length; i++) {
                 this.pages.push(this.ifAuth[i]);
             }
+            console.log(this.userInformations);
         }
         else {
             this.auth = false;

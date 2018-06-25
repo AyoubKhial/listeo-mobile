@@ -1,18 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DatabaseProvider } from '../../../providers/database/database';
 import { RestaurantDetailPage } from '../restaurant-detail/restaurant-detail';
+import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/takeUntil';
 
 @IonicPage()
 @Component({
-    selector: 'page-restaurants',
-    templateUrl: 'restaurants.html',
+    selector: 'page-restaurants-listing',
+    templateUrl: 'restaurants-listing.html',
 })
-export class RestaurantsPage {
+export class RestaurantsListingPage implements OnInit, OnDestroy {
 
     public restaurants: any[];
     public filtredRestaurants: any[];
     private userId: number;
+    private unsubscribe = new Subject<void>();
 
     constructor(public navCtrl: NavController, public navParams: NavParams, private databaseProvider: DatabaseProvider) {
         this.userId = 0;
@@ -26,8 +29,8 @@ export class RestaurantsPage {
     }
 
     getAllActivatedRestaurants() {
-        this.databaseProvider.getAllActivatedRestaurants(this.userId).subscribe(res => {
-            if (res != '0') {
+        this.databaseProvider.getAllActivatedRestaurants(this.userId).takeUntil(this.unsubscribe).subscribe(res => {
+            if (res != 'Not found') {
                 this.restaurants = res;
                 this.filtredRestaurants = this.restaurants;
             }
@@ -53,5 +56,10 @@ export class RestaurantsPage {
 
     getStars(rating) {
         return { 'width': parseFloat(rating) / 5 * 100 + '%' };
+    }
+
+    ngOnDestroy(): void {
+        this.unsubscribe.next();
+        this.unsubscribe.complete();
     }
 }

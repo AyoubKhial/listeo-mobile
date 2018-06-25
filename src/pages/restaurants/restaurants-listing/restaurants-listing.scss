@@ -5,25 +5,31 @@ page-restaurants {
         border-bottom: 1px dashed color($colors, primary);
         margin: 0;
     }
+
     .item:last-child{
         border: none;
     }
+
     .list-ios>.item-block:first-child {
         border-top: none;
     }
+
     .list-ios>.item-block:last-child {
         border-bottom: none;
     }
+
     .item .thumbnail img {
         height: 60px;
         width: 60px;
         
     }
+
     .item .thumbnail {
         min-width: 0;
         min-height: 0;
         margin: 0
     }
+
     .item{
         padding: 0
     }
@@ -54,6 +60,7 @@ page-restaurants {
         display: inline-block;
         font-size: 13px;
     }
+    
     .restaurant-adresse{
         color: black;
         font-size: 12px;

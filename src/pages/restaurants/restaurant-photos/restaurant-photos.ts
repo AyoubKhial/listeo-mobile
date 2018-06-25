@@ -1,13 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
 
 @IonicPage()
 @Component({
     selector: 'page-restaurant-photos',
     templateUrl: 'restaurant-photos.html',
 })
-export class RestaurantPhotosPage {
+export class RestaurantPhotosPage implements OnInit {
 
     public name: string
     public photos;
@@ -18,6 +17,5 @@ export class RestaurantPhotosPage {
     ngOnInit(): void {
         this.name = this.navParams.get('name');
         this.photos = this.navParams.get('photos');
-        console.log(this.photos)
     }
 }

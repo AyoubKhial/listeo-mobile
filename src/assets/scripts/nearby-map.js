@@ -27,7 +27,7 @@ function nearbyMap() {
                     '<div class="star-rating">' +
                         '<div class="rating-counter">'+locationRatingCounter+' Reviews</div>' +
                         '<span class="stars alignright">' +
-                            '<span style="width: '+parseFloat(locationRating) / 5 * 100 + '%" ></span>'+
+                            '<span style="width: ' + parseFloat(locationRating) / 5 * 100 + '%" ></span>'+
                         '</span>'+
                     '</div>'+
                 '</div>' +

@@ -1,17 +1,19 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DatabaseProvider } from '../../../providers/database/database';
 import { RestaurantHoursPage } from '../restaurant-hours/restaurant-hours';
 import { RestaurantPhotosPage } from '../restaurant-photos/restaurant-photos';
 import { RestaurantLocationPage } from '../restaurant-location/restaurant-location';
 import { RestaurantCommentsPage } from '../restaurant-comments/restaurant-comments';
+import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/takeUntil';
 
 @IonicPage()
 @Component({
     selector: 'page-restaurant-detail',
     templateUrl: 'restaurant-detail.html',
 })
-export class RestaurantDetailPage {
+export class RestaurantDetailPage implements OnInit, OnDestroy {
 
     private restaurantId: number;
     public restaurant;
@@ -23,6 +25,7 @@ export class RestaurantDetailPage {
     public doughnutChartType: string = 'doughnut';
     public user;
     @ViewChild('ratingValue') ratingValue;
+    private unsubscribe = new Subject<void>();
 
     constructor(public navCtrl: NavController, public navParams: NavParams, private databaseProvider: DatabaseProvider) {
         this.userId = 0;
@@ -48,10 +51,9 @@ export class RestaurantDetailPage {
         if (this.isLoggedIn) {
             data.user = this.userId;
         }
-        this.databaseProvider.getRestaurantDetails(data).subscribe(response => {
+        this.databaseProvider.getRestaurantDetails(data).takeUntil(this.unsubscribe).subscribe(response => {
             if (response != 'Not found') {
                 this.restaurant = response[0];
-                console.log(this.restaurant)
                 this.doughnutChartData = [
                     this.restaurant.ratings[1][0],
                     this.restaurant.ratings[1][1],
@@ -111,5 +113,10 @@ export class RestaurantDetailPage {
             comments: this.restaurant.comments,
             number_comments: this.restaurant.number_comments
         })
+    }
+
+    ngOnDestroy(): void {
+        this.unsubscribe.next();
+        this.unsubscribe.complete();
     }
 }

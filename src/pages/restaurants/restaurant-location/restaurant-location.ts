@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Observable, Subscription } from 'rxjs';
 import { RestaurantDirectionsPage } from '../restaurant-directions/restaurant-directions';
@@ -8,7 +8,7 @@ import { RestaurantDirectionsPage } from '../restaurant-directions/restaurant-di
     selector: 'page-restaurant-location',
     templateUrl: 'restaurant-location.html',
 })
-export class RestaurantLocationPage {
+export class RestaurantLocationPage implements OnInit {
 
     private callMapScript: Subscription;
     public longitude;
@@ -18,6 +18,7 @@ export class RestaurantLocationPage {
     public adresse: string;
     public rating: number;
     public number_reviews: number
+
     constructor(public navCtrl: NavController, public navParams: NavParams) {
 
     }
@@ -48,5 +49,4 @@ export class RestaurantLocationPage {
             latitude: this.latitude
         })
     }
-
 }

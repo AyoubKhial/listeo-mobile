@@ -14,15 +14,15 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { firebaseConfig } from '../config';
-import { RestaurantsPage } from '../pages/restaurant/restaurants/restaurants';
-import { RestaurantDetailPage } from '../pages/restaurant/restaurant-detail/restaurant-detail';
+import { RestaurantsListingPage } from '../pages/restaurants/restaurants-listing/restaurants-listing';
+import { RestaurantDetailPage } from '../pages/restaurants/restaurant-detail/restaurant-detail';
 import { ChartsModule } from 'ng2-charts';
 import { Ionic2RatingModule } from 'ionic2-rating';
-import { RestaurantHoursPage } from '../pages/restaurant/restaurant-hours/restaurant-hours';
-import { RestaurantPhotosPage } from '../pages/restaurant/restaurant-photos/restaurant-photos';
-import { RestaurantLocationPage } from '../pages/restaurant/restaurant-location/restaurant-location';
-import { RestaurantDirectionsPage } from '../pages/restaurant/restaurant-directions/restaurant-directions';
-import { RestaurantCommentsPage } from '../pages/restaurant/restaurant-comments/restaurant-comments';
+import { RestaurantHoursPage } from '../pages/restaurants/restaurant-hours/restaurant-hours';
+import { RestaurantPhotosPage } from '../pages/restaurants/restaurant-photos/restaurant-photos';
+import { RestaurantLocationPage } from '../pages/restaurants/restaurant-location/restaurant-location';
+import { RestaurantDirectionsPage } from '../pages/restaurants/restaurant-directions/restaurant-directions';
+import { RestaurantCommentsPage } from '../pages/restaurants/restaurant-comments/restaurant-comments';
 import { NearbyPage } from '../pages/nearby/nearby';
 import { ProfilePage } from '../pages/profile/profile';
 
@@ -33,7 +33,7 @@ import { ProfilePage } from '../pages/profile/profile';
         LoginPage,
         LogoutPage,
         BlogPage,
-        RestaurantsPage,
+        RestaurantsListingPage,
         RestaurantDetailPage,
         RestaurantHoursPage,
         RestaurantPhotosPage,
@@ -59,7 +59,7 @@ import { ProfilePage } from '../pages/profile/profile';
         LoginPage,
         LogoutPage,
         BlogPage,
-        RestaurantsPage,
+        RestaurantsListingPage,
         RestaurantDetailPage,
         RestaurantHoursPage,
         RestaurantPhotosPage,

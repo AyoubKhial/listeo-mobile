@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Observable, Subscription } from 'rxjs';
 
@@ -7,7 +7,7 @@ import { Observable, Subscription } from 'rxjs';
     selector: 'page-restaurant-directions',
     templateUrl: 'restaurant-directions.html',
 })
-export class RestaurantDirectionsPage {
+export class RestaurantDirectionsPage implements OnInit {
 
     private callMapScript: Subscription;
     public longitude;

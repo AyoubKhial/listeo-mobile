@@ -1,19 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the RestaurantHoursPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
     selector: 'page-restaurant-hours',
     templateUrl: 'restaurant-hours.html',
 })
-export class RestaurantHoursPage {
+export class RestaurantHoursPage implements OnInit {
 
     public name: string
     public hours;
@@ -38,5 +32,4 @@ export class RestaurantHoursPage {
         this.today = weekday[d.getDay()];
         this.today = this.today.charAt(0).toLowerCase() + this.today.slice(1);
     }
-
 }

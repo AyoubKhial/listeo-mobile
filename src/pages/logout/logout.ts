@@ -10,15 +10,12 @@ import { GooglePlus } from '@ionic-native/google-plus';
 })
 export class LogoutPage {
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, private afAuth: AngularFireAuth,
-        private gplus: GooglePlus) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, private afAuth: AngularFireAuth, private gplus: GooglePlus) {
         localStorage.removeItem("user");
         this.navCtrl.setRoot(HomePage);
         this.gplus.logout();
         //web
         this.afAuth.auth.signOut();
         location.reload();
-        
     }
 }
-

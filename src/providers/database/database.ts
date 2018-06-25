@@ -8,40 +8,39 @@ import { Platform } from 'ionic-angular';
 export class DatabaseProvider {
 
     private hasResult: any;
-    private url: string;
 
     constructor(public http: Http, public platform: Platform) { }
 
     getAllActivatedArticles(): Observable<any> {
         return this.http.get("http://localhost/listeo-desktop/src/api/database/getAllActivatedArticles.php")
-            .map(res => {
-                this.hasResult = res;
+            .map(response => {
+                this.hasResult = response;
                 if (this.hasResult._body !== '0') {
-                    return res.json();
+                    return response.json();
                 }
                 else {
-                    return res.text();
+                    return response.text();
                 }
             });
     }
 
     checkLoginCredentials(data): Observable<any> {
         return this.http.post("http://localhost/listeo-desktop/src/api/database/checkLoginCredentials.php", data)
-            .map(res => {
-                this.hasResult = res;
+            .map(response => {
+                this.hasResult = response;
                 if (this.hasResult._body !== '0') {
-                    return res.json();
+                    return response.json();
                 }
                 else {
-                    return res.text();
+                    return response.text();
                 }
             });
     }
 
     registerWithGoogle(data): Observable<any> {
         return this.http.post("http://localhost/listeo/src/api/database/mobile/registerWithGoogle.php", data)
-            .map(res => {
-                return res.text();
+            .map(response => {
+                return response.text();
             });
     }
 
@@ -110,8 +109,8 @@ export class DatabaseProvider {
             });
     }
 
-    getAll() {
-        return this.http.get('http://localhost/listeo-desktop/src/api/database/getAll.php')
+    getAllLocations() {
+        return this.http.get('http://localhost/listeo-desktop/src/api/database/getAllLocations.php')
             .map(response => {
                 this.hasResult = response;
                 if (this.hasResult._body !== 'Not found') {
